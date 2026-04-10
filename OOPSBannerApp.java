@@ -2,26 +2,13 @@ import java.util.*;
 
 public class OOPSBannerApp {
 
-    // Inner class
-    static class CharacterPattern {
-        char ch;
-        String[] pattern;
-
-        CharacterPattern(char ch, String[] pattern) {
-            this.ch = ch;
-            this.pattern = pattern;
-        }
-
-        String[] getPattern() {
-            return pattern;
-        }
-    }
+    // Map to store character patterns
+    static Map<Character, String[]> map = new HashMap<>();
 
     public static void main(String[] args) {
 
-        Map<Character, CharacterPattern> map = new HashMap<>();
-
-        map.put('O', new CharacterPattern('O', new String[]{
+        // Add patterns to map
+        map.put('O', new String[]{
                 " *** ",
                 "*     *",
                 "*     *",
@@ -29,9 +16,9 @@ public class OOPSBannerApp {
                 "*     *",
                 "*     *",
                 " *** "
-        }));
+        });
 
-        map.put('P', new CharacterPattern('P', new String[]{
+        map.put('P', new String[]{
                 " *** ",
                 "*     *",
                 "*     *",
@@ -39,9 +26,9 @@ public class OOPSBannerApp {
                 "*      ",
                 "*      ",
                 "*      "
-        }));
+        });
 
-        map.put('S', new CharacterPattern('S', new String[]{
+        map.put('S', new String[]{
                 " *** ",
                 "*      ",
                 "*      ",
@@ -49,13 +36,18 @@ public class OOPSBannerApp {
                 "      *",
                 "      *",
                 " *** "
-        }));
+        });
 
-        String word = "OOPS";
+        // Call function to print
+        printBanner("OOPS");
+    }
+
+    // Function to print banner
+    public static void printBanner(String word) {
 
         for (int i = 0; i < 7; i++) {
             for (char c : word.toCharArray()) {
-                System.out.print(map.get(c).getPattern()[i] + "   ");
+                System.out.print(map.get(c)[i] + "  ");
             }
             System.out.println();
         }
